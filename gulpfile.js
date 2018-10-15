@@ -69,6 +69,11 @@ gulp.task("js", function () {
     .pipe(gulp.dest(buildDest + '/js'))
 });
 
+// simplest possible noddy js management
+gulp.task("images", function () {
+  gulp.src(buildSrc + "/images/**/*.jpg")
+    .pipe(gulp.dest(buildDest + '/images'))
+});
 
 
 // get a list of routes stored in the form
@@ -118,6 +123,7 @@ gulp.task("get:routes", function () {
 gulp.task("watch", ["build"], function () {
   gulp.watch(buildSrc + "/scss/**/*", ["scss"]);
   gulp.watch(buildSrc + "/js/**/*", ["js"]);
+  gulp.watch(buildSrc + "/images/**/*", ["images"]);
   gulp.watch(buildSrc + "/pages/**/*", ["render"]);
   gulp.watch(buildSrc + "/entries.json", ["render"]);
 });
@@ -128,7 +134,7 @@ gulp.task("watch", ["build"], function () {
 gulp.task("build", function(callback) {
   runSequence(
     "clean-build",
-    ["get:routes", "render", "js", "scss"],
+    ["get:routes", "render", "js", "images", "scss"],
     callback
   );
 });
