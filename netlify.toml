@@ -5,6 +5,6 @@
   NODE_ENV = "8.9.0"
 
 [[redirects]]
-  # from = "/*"
-  # to = "/index.html"
-  # status = 404
+  from = "/*"
+  to = "/index.html"
+  status = 404
